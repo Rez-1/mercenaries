@@ -1,11 +1,13 @@
 import express from 'express';
 import path from 'path';
+import cors from 'cors';
 import { existsSync } from 'fs';
 import { getDirectories, getFileNames } from './service/file.js';
 
 const app = express();
 const dirname = (path.dirname(import.meta.url)).replace('file:///', '');
 const LOCALES_SOURCE = path.resolve(dirname, '../../locales/');
+app.use(cors());
 
 app.get('/', (req, res) => {
   res.sendFile('template/home.html', { root: dirname });
