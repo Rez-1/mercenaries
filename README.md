@@ -1,2 +1,2 @@
 # mercenaries
-Make party 2
+Make party
