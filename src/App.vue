@@ -56,15 +56,15 @@ const selectedLanguage = (val) => (val === language.value);
 const applications = ref([
   {
     name: 'Address Book',
-    value: 'ibrs_address_book',
+    value: 'address_book',
   },
   {
     name: 'Mutations',
-    value: 'ibrs_mutations',
+    value: 'mutations',
   },
   {
     name: 'Pensions',
-    value: 'ibrs_pensions',
+    value: 'pensions',
   }
 ]);
 const languages = ref([
