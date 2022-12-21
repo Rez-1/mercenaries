@@ -1,5 +1,5 @@
 {
-  "title": "This is a title",
+  "title:addressbook": "This is a title",
   "description": "this is the description",
   "submit": "submit",
   "confirmSaveSettings": "Are you sure you want to save this settings"

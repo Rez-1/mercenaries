@@ -3,20 +3,17 @@ import {
 } from 'vue';
 import axios from "axios";
 
-export default function useFormJSON() {
-  const isLoading = ref();
-  const jsonData = ref();
-  const error = ref();
+export default function useProjects() {
+  const projects = ref([]);
+  const isLoading = ref(false);
+
   const fetch = () => {
     isLoading.value = true;
     axios.get(
-      "https://jsonplaceholder.typicode.com/posts",
+      "http://localhost:4000/api/application",
     )
       .then((res) => {
-        jsonData = res;
-      })
-      .catch((err) => {
-        error.value = err;
+        projects.value = res.data.applicationList;
       })
       .finally(() => {
         isLoading.value = false;
@@ -26,7 +23,7 @@ export default function useFormJSON() {
   fetch();
   return {
     isLoading,
-    jsonData,
-    error,
+    projects,
   };
 }
+  

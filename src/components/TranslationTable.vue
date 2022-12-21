@@ -1,12 +1,10 @@
 <script setup>
 import { ref, computed, defineProps, defineEmits, reactive } from 'vue';
 
-import mockJSON from '../mock.json';
-
 const props = defineProps({
   translations: {
     type: Object,
-    default: () => mockJSON,
+    required: true,
   },
 });
 
@@ -38,37 +36,28 @@ function save() {
 
 <template>
 <div class="container">
-  <div class="float-right mt-3 col-2">
+  <div class="float-right mt-3 col-3">
     <input class="form-control" type="text" placeholder="filter by key" name="filter" v-model="filterTerm">
   </div>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col" style="width: 30%">Key</th>
-        <th scope="col">Value</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="key in filteredTranslationsKeys" :key="key">
-        <th scope="row">
-          <label :for="key">{{ key }}</label></th>
-        <td>
-          <textarea :id="key" class="form-control" type="text" :name="key" v-model="internalObj[key]" />
-          <p v-if="internalObj[key] !== translations[key]" style="color: orange">
-            old value: {{  translations[key] }}
-          </p>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <!-- <ul>
-    <li v-for="key in filteredTranslationsKeys" :key="key">
-      {{ key }} <input type="text" :name="key" v-model="internalObj[key]" />
-      <span v-if="internalObj[key] !== translations[key]" style="color: orange">
-        old value: {{  translations[key] }}
+  <p class="mb-1 text-muted text-end">Last modified by John Doe on Dec 21, 2022</p>
+  <ul class="list-group mb-4">
+    <li class="list-group-item" :class="{'border-warning': internalObj[key] !== translations[key]}" v-for="key in filteredTranslationsKeys" :key="key">
+      <label :for="key" class="form-label label">{{ key }}</label>
+      <textarea rows="1" class="text-area form-control" :id="key" :name="key" v-model="internalObj[key]" />
+      <span class="d-block mt-2 text-muted" v-if="internalObj[key] !== translations[key]">
+        Unsaved translation. Old value: {{  translations[key] }}
       </span>
     </li>
-  </ul> -->
+  </ul>
   <button @click="save" class="btn btn-success" type="button">Save</button>
 </div>
 </template>
+
+<style scoped>
+.label {
+  font-weight: 700;
+}
+.text-area {
+  resize: none;
+}
+</style>

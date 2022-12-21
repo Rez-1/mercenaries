@@ -5,15 +5,12 @@
         <label for="application" class="text-right">Select Application</label>
       </div>
       <div class="col-8">
-        <select name="application" id="application" class="form-select" v-model="application">
-          <option :value="''">
-            Select...
-          </option>
+        <select name="application" id="application" class="form-select" v-model="selectedProject">
           <option
-            v-for="application in applications"
-            :key="application"
-            :value="application.value">
-              {{application.name}}
+            v-for="projectName in projects"
+            :key="projectName"
+            :value="projectName">
+              {{projectName}}
           </option>
         </select>
       </div>
@@ -23,52 +20,38 @@
         <label for="language" class="text-right">Select Language</label>
       </div>
       <div class="col-8">
-        <select name="language" id="language" class="form-select" v-model="language">
-          <option :value="''">
-            Select...
-          </option>
+        <select name="language" id="language" class="form-select" v-model="selectedLanguage">
           <option
-            v-for="lang in languages"
+            v-for="lang in locales"
             :key="lang"
-            :value="lang.value">
-              {{lang.name}}
+            :value="lang">
+              {{lang}}
           </option>
         </select>
       </div>
     </div>
   </div>
-  <TranslationTable v-if="application && language"/>
+  <TranslationTable @save="saveTranslations" v-if="Object.keys(translations).length" :translations="translations" />
 </template>
 
 <script setup>
-import TranslationTable from './components/TranslationTable.vue'
+import TranslationTable from './components/TranslationTable.vue';
+import useProjects from '@/composable/useProjects';
+import useLocales from '@/composable/useLocales';
+import useTranslations from '@/composable/useTranslations';
 import {ref} from 'vue';
-const application = ref('ibrs_address_book');
-const language = ref('en');
-const applications = ref([
-  {
-    name: 'Address Book',
-    value: 'ibrs_address_book',
-  },
-  {
-    name: 'Mutations',
-    value: 'ibrs_mutations',
-  },
-  {
-    name: 'Pensions',
-    value: 'ibrs_pensions',
-  }
-]);
-const languages = ref([
-  {
-    name: 'English',
-    value: 'en',
-  },
-  {
-    name: 'Dutch',
-    value: 'nl',
-  }
-])
+
+const selectedProject = ref('address-book');
+const selectedLanguage = ref('en');
+
+const { projects } = useProjects();
+const { locales } = useLocales(selectedProject);
+const { translations, setTranslations } = useTranslations(selectedProject, selectedLanguage);
+
+function saveTranslations(items) {
+  setTranslations(items);
+}
+
 </script>
 <style scoped>
 @import'~bootstrap/dist/css/bootstrap.css';
