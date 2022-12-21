@@ -31,10 +31,14 @@
 </template>
 
 <script>
+import useFormJSON from "@/composable/useFormJSON";
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  mounted() {
+  useFormJSON();
   }
 }
 </script>
