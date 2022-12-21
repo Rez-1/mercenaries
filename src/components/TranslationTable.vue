@@ -35,11 +35,11 @@ function save() {
 </script>
 
 <template>
-  <div class="mt-3 col-3 filter-input">
+  <div class="mt-3 col-3">
     <input class="form-control" type="text" placeholder="filter by key" name="filter"
       v-model="filterTerm">
   </div>
-  <div class="container key-container">
+  <div class="key-container">
     <p class="mb-1 text-muted text-end">Last modified by John Doe on Dec 21, 2022</p>
     <ul class="list-group mb-4">
       <li class="list-group-item"
@@ -54,7 +54,7 @@ function save() {
       </li>
     </ul>
   </div>
-  <div class="container">
+  <div>
     <button @click="save" class="btn btn-success" type="button">Save</button>
   </div>
 </template>
@@ -72,8 +72,5 @@ function save() {
   height: 50vh;
   overflow: auto;
   margin-bottom: 1em;
-}
-.filter-input {
-  margin: 1em;
 }
 </style>

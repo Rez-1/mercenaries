@@ -5,8 +5,9 @@ defineProps(['loading', 'name']);
 
 <style scoped="true">
 header {
-  padding: 2em 1em;
+  padding: 1em 0;
   display: flex;
+  align-items: center;
 }
 header > div  {
   flex-grow: 1;
