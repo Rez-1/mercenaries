@@ -1,4 +1,5 @@
 <template>
+<Header :loading="false"></Header>
 <div id="form" class="container">
     <div class="form_row row mt-2" >
       <div class="col-4">
@@ -43,6 +44,7 @@
 
 <script setup>
 import TranslationTable from './components/TranslationTable.vue'
+import Header from './components/Header.vue';
 import { ref } from 'vue';
 const application = ref('ibrs_address_book');
 const language = ref('en');
