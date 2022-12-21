@@ -2,7 +2,7 @@
 <div id="form" class="container">
     <div class="form_row row mt-2" >
       <div class="col-4">
-        <label for="application" class="text-right">Select Application</label>
+        <label for="application" class="text-right align-middle">Select Application</label>
       </div>
       <div class="col-8">
         <select name="application" id="application" class="form-select" v-model="selectedProject">
@@ -17,7 +17,7 @@
     </div>
     <div class="form_row row mt-2" >
       <div class="col-4">
-        <label for="language" class="text-right">Select Language</label>
+        <label for="language" class="text-right align-middle">Select Language</label>
       </div>
       <div class="col-8">
         <select name="language" id="language" class="form-select" v-model="selectedLanguage">
