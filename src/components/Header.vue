@@ -19,7 +19,6 @@ header > div  {
 
 <template>
   <header class="container">
-    <div class="logo">logo</div>
     <div class="name"><h1 class="display-1">{{name }}</h1></div>
     <div class="loading">
       <div class="spinner-border text-primary" role="status" v-if="loading">

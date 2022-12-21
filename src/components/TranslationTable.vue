@@ -39,7 +39,7 @@ function save() {
     <input class="form-control" type="text" placeholder="filter by key" name="filter"
       v-model="filterTerm">
   </div>
-  <div class="container">
+  <div class="container key-container">
     <p class="mb-1 text-muted text-end">Last modified by John Doe on Dec 21, 2022</p>
     <ul class="list-group mb-4">
       <li class="list-group-item"
@@ -54,7 +54,9 @@ function save() {
       </li>
     </ul>
   </div>
-  <button @click="save" class="btn btn-success" type="button">Save</button>
+  <div class="container">
+    <button @click="save" class="btn btn-success" type="button">Save</button>
+  </div>
 </template>
 
 <style scoped>
@@ -66,10 +68,10 @@ function save() {
   resize: none;
 }
 
-.container {
+.key-container {
   height: 50vh;
   overflow: auto;
-  margin-bottom: 1em;;
+  margin-bottom: 1em;
 }
 .filter-input {
   margin: 1em;
