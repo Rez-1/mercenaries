@@ -1,4 +1,5 @@
 <template>
+<Header :loading="false"></Header>
 <div id="form" class="container">
     <div class="form_row row mt-2" >
       <div class="col-4">
@@ -36,6 +37,7 @@
 
 <script setup>
 import TranslationTable from './components/TranslationTable.vue';
+import Header from './components/Header.vue';
 import useProjects from '@/composable/useProjects';
 import useLocales from '@/composable/useLocales';
 import useTranslations from '@/composable/useTranslations';
