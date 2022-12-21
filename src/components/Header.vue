@@ -1,6 +1,6 @@
 <script setup>
 import { defineProps } from 'vue';
-defineProps(['loading']);
+defineProps(['loading', 'name']);
 </script>
 
 <style scoped="true">
@@ -20,9 +20,9 @@ header > div  {
 <template>
   <header class="container">
     <div class="logo">logo</div>
-    <div class="name"></div>
+    <div class="name"><h1 class="display-1">{{name }}</h1></div>
     <div class="loading">
-      <div class="spinner-grow" role="status" v-if="loading">
+      <div class="spinner-border text-primary" role="status" v-if="loading">
         <span class="visually-hidden">Loading...</span>
       </div>
     </div>
