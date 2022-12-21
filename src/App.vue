@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="col">
-      <Header :loading="true" name="What the key"></Header>
+      <Header :loading="showSpinner"></Header>
       <div id="form" class="container">
         <div class="form_row row mt-2">
           <div class="col-4">
@@ -51,14 +51,18 @@ import Figma from './components/Figma.vue';
 import useProjects from '@/composable/useProjects';
 import useLocales from '@/composable/useLocales';
 import useTranslations from '@/composable/useTranslations';
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 
 const selectedProject = ref('address-book');
 const selectedLanguage = ref('en');
 
-const { projects } = useProjects();
-const { locales } = useLocales(selectedProject);
-const { translations, setTranslations } = useTranslations(selectedProject, selectedLanguage);
+const { projects, isLoading: loadingProjects } = useProjects();
+const { locales, isLoading: loadingLocales } = useLocales(selectedProject);
+const { translations, setTranslations, isLoading: loadingTranslations } = useTranslations(selectedProject, selectedLanguage);
+
+const showSpinner = computed(() => (
+  loadingLocales.value || loadingProjects.value|| loadingTranslations.value
+));
 
 function saveTranslations(items) {
   setTranslations(items);
