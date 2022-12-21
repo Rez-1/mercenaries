@@ -1,16 +1,24 @@
 <!DOCTYPE html>
 <html>
-  <head></head>
-  <body>
-    <h1>Endpoints</h1>
 
-    <h2>/api/application</h2>
-    <a href="api/application">returns a list of available applications (based on folder names)</a>
+<head></head>
 
-    <h2>/api/application/:application-name</h2>
-    <a href="api/application/:application-name">returns a list of available languages</a>
+<body>
+  <h1>Endpoints</h1>
 
-    <h2>/api/application/:application-name/:language</h2>
-    <a href="api/application/:application-name/:language">returns the JSON for the chosen language and application</a>
-  </body>
+  <h2>GET /api/application</h2>
+  <a href="api/application">returns a list of available applications (based on folder names)</a>
+
+  <h2>GET /api/application/:application-name</h2>
+  <a href="api/application/:application-name">returns a list of available languages</a>
+
+  <h2>GET /api/application/:application-name/:language</h2>
+  <a href="api/application/:application-name/:language">returns the JSON for the chosen language and
+    application</a>
+
+  <h2>PUT /api/application/:application-name/:language</h2>
+  <a href="api/application/:application-name/:language">stores the provided JSON in the language
+    file</a>
+</body>
+
 </html>

@@ -1,4 +1,4 @@
-import { readdir } from 'fs/promises'
+import { readdir, writeFile } from 'fs/promises'
 
 const getDirectories = async (source) => {
   return (await getList(source))
@@ -14,4 +14,13 @@ const getFileNames = async source => {
     .map(dirent => dirent.name);
 }
 
-export { getDirectories, getFileNames }
+const updateJson = async (target, content) => {
+  await writeFile(target, content, err => {
+    if (err) {
+      return false;
+    }
+    return true;
+  });
+}
+
+export { getDirectories, getFileNames, updateJson }
